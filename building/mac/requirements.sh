@@ -1,5 +1,6 @@
 #brew install boost pkg-config 
 brew uninstall qt
+brew uninstall qt4
 brew uninstall qt5
 brew update
 brew install protobuf miniupnpc openssl qrencode berkeley-db4 
