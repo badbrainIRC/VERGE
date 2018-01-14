@@ -129,8 +129,8 @@ fi
 #// Clone files from repo, Permissions and make
 
 git clone --recurse-submodules https://github.com/vergecurrency/VERGE
-cd VERGE
-sudo sh autogen.sh
+cd ~/VERGE
+sudo ./autogen.sh
 chmod 777 ~/VERGE/share/genbuild.sh
 chmod 777 ~/VERGE/src/leveldb/build_detect_platform
 
