@@ -152,7 +152,7 @@ You can also check out this [Linux Wallet Video Tutorial](https://www.youtube.co
 
 ```shell
 sudo rm -Rf ~/VERGE  #(if you already have it)
-sudo apt-get -y install git && cd ~ && git clone https://github.com/vergecurrency/VERGE && cd VERGE && sh go.sh
+sudo apt-get -y install git && cd ~ && git clone --recurse-submodules https://github.com/vergecurrency/VERGE && cd VERGE && sh go.sh
 ```
 
 The _slightly_ longer version:
