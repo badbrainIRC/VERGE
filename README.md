@@ -155,10 +155,14 @@ sudo rm -Rf ~/VERGE  #(if you already have it)
 sudo apt-get -y install git && cd ~ && git clone --recurse-submodules https://github.com/vergecurrency/VERGE && cd VERGE && sh go.sh
 ```
 or
-
 ```
 sudo rm -Rf ~/VERGE  #(if you already have it)
 cd ~ && wget https://raw.githubusercontent.com/vergecurrency/VERGE/master/go.sh && sudo sh go.sh
+```
+or
+```
+sudo rm -Rf ~/VERGE  #(if you already have it)
+sudo wget -O - https://raw.githubusercontent.com/vergecurrency/VERGE/master/go.sh | bash
 ```
 
 The _slightly_ longer version:
