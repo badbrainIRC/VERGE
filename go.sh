@@ -152,6 +152,8 @@ else
      grep --include=*.hpp -r '/usr/' -e "define BOOST_LIB_VERSION"
 fi
 
+cd ~
+cd VERGE
 sudo rm wrd01.txt
 sudo rm wrd00.txt
 sudo rm words
