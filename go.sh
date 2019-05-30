@@ -193,9 +193,9 @@ red=`tput setaf 1`
 green=`tput setaf 2`
 reset=`tput sgr0`
 echo "${green}ARM cpu detected --disable-sse2${reset}"
-txt="--disable-sse2"
+txt=$("--disable-sse2")
 else
-txt=""
+txt=$("")
 fi
 
 if [ -d /usr/local/BerkeleyDB.4.8/include ]
