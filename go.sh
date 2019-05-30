@@ -187,13 +187,14 @@ fi
 echo "You have choosen $answer"
 
 cd ~
-if [ $(dirname "$(cat wrd0$answer.txt)") = "/usr/lib/arm-linux-gnueabihf"  ]
+if [ $(dirname "$(cat wrd0$answer.txt)") = "/usr/lib/arm-linux-gnueabihf" ]
+then
 red=`tput setaf 1`
 green=`tput setaf 2`
 reset=`tput sgr0`
 echo "${green}ARM cpu detected --disable-sse2${reset}"
 mod="--disable-sse2"
-then
+else
 mod=""
 fi
 
