@@ -152,8 +152,17 @@ else
      grep --include=*.hpp -r '/usr/' -e "define BOOST_LIB_VERSION"
 fi
 
+#// Clone files from repo, Permissions and make
+
+git clone --recurse-submodules https://github.com/vergecurrency/VERGE
 cd ~
 cd VERGE
+./autogen.sh
+chmod 777 ~/VERGE/share/genbuild.sh
+chmod 777 ~/VERGE/src/leveldb/build_detect_platform
+
+grep --include=*.hpp -r '/usr/' -e "define BOOST_LIB_VERSION"
+
 sudo rm wrd01.txt
 sudo rm wrd00.txt
 sudo rm words
@@ -175,7 +184,6 @@ fi
 
 echo "You have choosen $answer"
 
-cd ~
 if [ $(dirname "$(cat wrd00.txt)") = "/usr/lib/arm-linux-gnueabihf" ]
 then
 red=`tput setaf 1`
@@ -186,17 +194,6 @@ txt=$(echo "--disable-sse2")
 else
 txt=$(echo "")
 fi
-
-#// Clone files from repo, Permissions and make
-
-git clone --recurse-submodules https://github.com/vergecurrency/VERGE
-cd ~
-cd VERGE
-./autogen.sh
-chmod 777 ~/VERGE/share/genbuild.sh
-chmod 777 ~/VERGE/src/leveldb/build_detect_platform
-
-grep --include=*.hpp -r '/usr/' -e "define BOOST_LIB_VERSION"
 
 if [ -d /usr/local/BerkeleyDB.4.8/include ]
 then
