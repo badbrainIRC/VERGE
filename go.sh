@@ -152,24 +152,11 @@ else
      grep --include=*.hpp -r '/usr/' -e "define BOOST_LIB_VERSION"
 fi
 
-#// Clone files from repo, Permissions and make
-
-git clone --recurse-submodules https://github.com/vergecurrency/VERGE
-cd ~
-cd VERGE
-./autogen.sh
-chmod 777 ~/VERGE/share/genbuild.sh
-chmod 777 ~/VERGE/src/leveldb/build_detect_platform
-
-grep --include=*.hpp -r '/usr/' -e "define BOOST_LIB_VERSION"
-
 sudo rm wrd01.txt
 sudo rm wrd00.txt
 sudo rm words
 find /usr/ -name libboost_chrono.so > words
 split -dl 1 --additional-suffix=.txt words wrd
-
-
 
 if [ -e wrd01.txt ]
 then
@@ -197,6 +184,17 @@ txt=$(echo "--disable-sse2")
 else
 txt=$(echo "")
 fi
+
+#// Clone files from repo, Permissions and make
+
+git clone --recurse-submodules https://github.com/vergecurrency/VERGE
+cd ~
+cd VERGE
+./autogen.sh
+chmod 777 ~/VERGE/share/genbuild.sh
+chmod 777 ~/VERGE/src/leveldb/build_detect_platform
+
+grep --include=*.hpp -r '/usr/' -e "define BOOST_LIB_VERSION"
 
 if [ -d /usr/local/BerkeleyDB.4.8/include ]
 then
