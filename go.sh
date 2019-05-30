@@ -85,7 +85,7 @@ else
 red=`tput setaf 1`
 green=`tput setaf 2`
 reset=`tput sgr0`
-echo "${red}Libboost will not be installed its already there....${reset}"
+echo "${green}Libboost will not be installed its already there....${reset}"
 grep --include=*.hpp -r '/usr/' -e "define BOOST_LIB_VERSION"
 fi
 
@@ -103,7 +103,7 @@ then
 red=`tput setaf 1`
 green=`tput setaf 2`
 reset=`tput sgr0`
-echo "${red}BerkeleyDb already present...$(grep --include *.h -r '/usr/' -e 'DB_VERSION_STRING')${reset}" 
+echo "${green}BerkeleyDb already present...$(grep --include *.h -r '/usr/' -e 'DB_VERSION_STRING')${reset}" 
 else
 wget http://download.oracle.com/berkeley-db/db-4.8.30.NC.tar.gz 
 tar -xzvf db-4.8.30.NC.tar.gz
@@ -188,6 +188,10 @@ echo "You have choosen $answer"
 
 cd ~
 if [ $(dirname "$(cat wrd0$answer.txt)") = "/usr/lib/arm-linux-gnueabihf"  ]
+red=`tput setaf 1`
+green=`tput setaf 2`
+reset=`tput sgr0`
+echo "${green}ARM cpu detected --disable-sse2${reset}"
 mod="--disable-sse2"
 then
 mod=""
@@ -196,11 +200,11 @@ fi
 if [ -d /usr/local/BerkeleyDB.4.8/include ]
 then
 cd VERGE
-./configure CXXFLAGS="--param ggc-min-expand=1 --param ggc-min-heapsize=32768" CPPFLAGS="-I/usr/local/BerkeleyDB.4.8/include -O2" LDFLAGS="-L/usr/local/BerkeleyDB.4.8/lib" --with-gui=qt5 --with-boost-libdir=$(dirname "$(cat wrd0$answer.txt)") --disable-bench --disable-tests --disable-gui-tests --without-miniupnpc $mod
+./configure CXXFLAGS="--param ggc-min-expand=1 --param ggc-min-heapsize=32768" CPPFLAGS="-I/usr/local/BerkeleyDB.4.8/include -O2" LDFLAGS="-L/usr/local/BerkeleyDB.4.8/lib" --with-gui=qt5 --with-boost-libdir=$(dirname "$(cat wrd0$answer.txt)") --disable-bench --disable-tests --disable-gui-tests --without-miniupnpc '$mod'
 echo "Using Berkeley Generic..."
 else
 cd VERGE
-./configure CXXFLAGS="--param ggc-min-expand=1 --param ggc-min-heapsize=32768" CPPFLAGS="-O2" --with-gui=qt5 --with-boost-libdir=$(dirname "$(cat wrd0$answer.txt)") --disable-bench --disable-tests --disable-gui-tests --without-miniupnpc $mod
+./configure CXXFLAGS="--param ggc-min-expand=1 --param ggc-min-heapsize=32768" CPPFLAGS="-O2" --with-gui=qt5 --with-boost-libdir=$(dirname "$(cat wrd0$answer.txt)") --disable-bench --disable-tests --disable-gui-tests --without-miniupnpc '$mod'
 echo "Using default system Berkeley..."
 fi
 
