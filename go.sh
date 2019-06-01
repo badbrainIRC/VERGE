@@ -95,6 +95,8 @@ sudo apt-get -y install lynx
 
 sudo apt-get -y install unzip
 
+sudo apt-get -y install sed
+
 cd ~
 
 #// Compile Berkeley if 4.8 is not there
